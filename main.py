@@ -9,6 +9,9 @@ from selenium import webdriver
 from bs4 import BeautifulSoup as soup 
 import os
 import time
+from flask import Flask, render_template, request, redirect
+
+app = Flask(__name__)
 
 # Chromedrive setting
 chrome_options = webdriver.ChromeOptions()
@@ -23,21 +26,40 @@ link = "https://medium.com"
 fr = 'Paris, France'
 to = 'Marseille, France'
 
-# url
-url = 'https://www.google.fr/maps/dir/{}/{}/data=!4m2!4m1!3e0'.format(fr, to)
-print("link: {}".format(url))
-# Driver get
-driver.get(url)
-time.sleep(3)
-# Get pagesoup
-page_soup = soup(driver.page_source, "html.parser")
-# Extract
-css_dist = "div[class^='section-directions-trip-distance'] > div"
-try:
-    distance = page_soup.select_one(css_dist).text
-except Exception as e:
-    print(e)
-    distance = 'Error'
+def from_to(fr, to):
+    # url
+    url = 'https://www.google.fr/maps/dir/{}/{}/data=!4m2!4m1!3e0'.format(fr, to)
+    print("link: {}".format(url))
+    # Driver get
+    driver.get(url)
+    # Soupify
+    page_soup = soup(driver.page_source, "html.parser")
+    # Extract
+    css_dist = "div[class^='section-directions-trip-distance'] > div"
+    
+    try:
+        distance = page_soup.select_one(css_dist).text
+    except Exception as e:
+        print(e)
+        distance = 'Error'
+    print("{} to {}: {}".format(fr, to, distance))
 
-print("{} to {}: {}".format(fr, to, distance))
-print("Finished!")
+    return distance
+
+# Routing do define url
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/distance/<fr>/<to>')
+def distance(fr, to):
+  #returns the post, the post_id should be an int
+  distance = from_to(fr, to)
+  return distance
+
+
+
+
+if __name__ == '__main__':
+    # Threaded option to enable multiple instances for multiple user access support
+    app.run(debug=True, port=5000)
