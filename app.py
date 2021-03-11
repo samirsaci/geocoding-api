@@ -32,6 +32,7 @@ def from_to(fr, to):
     print("link: {}".format(url))
     # Driver get
     driver.get(url)
+    time.sleep(1)
     # Soupify
     page_soup = soup(driver.page_source, "html.parser")
     # Extract
