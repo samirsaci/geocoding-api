@@ -27,7 +27,7 @@ url = 'https://www.google.com/maps/dir/{}/{}'.format(fr, to)
 # Driver get
 driver.get(url)
 # Get pagesoup
-page_soup = soup(driver.page_source, "html.parser"))
+page_soup = soup(driver.page_source, "html.parser")
 # Extract
 css_dist = "div[class^='section-directions-trip-distance'] > div"
 try:
