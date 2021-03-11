@@ -63,7 +63,7 @@ def index():
 def distance(fr, to):
   #returns the post, the post_id should be an int
   result = from_to(fr, to)
-  return distance
+  return result
 
 
 
