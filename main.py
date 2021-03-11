@@ -8,6 +8,7 @@
 from selenium import webdriver
 from bs4 import BeautifulSoup as soup 
 import os
+import time
 
 # Chromedrive setting
 chrome_options = webdriver.ChromeOptions()
@@ -26,6 +27,7 @@ to = 'Marseille, France'
 url = 'https://www.google.com/maps/dir/{}/{}'.format(fr, to)
 # Driver get
 driver.get(url)
+time.sleep(3)
 # Get pagesoup
 page_soup = soup(driver.page_source, "html.parser")
 # Extract
