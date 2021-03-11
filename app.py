@@ -37,15 +37,22 @@ def from_to(fr, to):
     page_soup = soup(driver.page_source, "html.parser")
     # Extract
     css_dist = "div[class^='section-directions-trip-distance'] > div"
+    css_dura = "div[class^='section-directions-trip-duration']"
     
     try:
         distance = page_soup.select_one(css_dist).text
+        duration = page_soup.select_one(css_dura).text
     except Exception as e:
         print(e)
         distance = 'Error'
+        duration = 'Error'
     print("{} to {}: {}".format(fr, to, distance))
+    result = {
+        "distance": distance, 
+        "duration": duration
+        }
 
-    return distance
+    return result
 
 # Routing do define url
 @app.route('/')
@@ -55,7 +62,7 @@ def index():
 @app.route('/distance/<fr>/<to>')
 def distance(fr, to):
   #returns the post, the post_id should be an int
-  distance = from_to(fr, to)
+  result = from_to(fr, to)
   return distance
 
 
