@@ -1,1 +1,1 @@
-worker: python main.py 
+web: gunicorn -t 120 -b :$PORT app:main
