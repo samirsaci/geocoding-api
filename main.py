@@ -30,6 +30,7 @@ driver.get(url)
 time.sleep(3)
 # Get pagesoup
 page_soup = soup(driver.page_source, "html.parser")
+print(page_soup)
 # Extract
 css_dist = "div[class^='section-directions-trip-distance'] > div"
 try:
