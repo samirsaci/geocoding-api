@@ -32,7 +32,8 @@ page_soup = soup(driver.page_source)
 css_dist = "div[class^='section-directions-trip-distance'] > div"
 try:
     distance = page_soup.select_one(css_dist).text
-except:
+except Exception as e:
+    print(e)
     distance = 'Error'
 
 print("{} to {}: {}".format(fr, to, distance))
