@@ -48,8 +48,9 @@ def from_to(fr, to):
         duration = 'Error'
     print("{} to {}: {}".format(fr, to, distance))
     result = {
-        "distance": distance, 
-        "duration": duration
+        "distance": distance
+        # "distance": distance, 
+        # "duration": duration
         }
 
     return result
