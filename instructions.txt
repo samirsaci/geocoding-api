@@ -1,0 +1,7 @@
+# Step 1: Download the Buildpacks Necessary for the ChromeDriver
+# Buildpack 1: https://github.com/heroku/heroku-buildpack-google-chrome
+# Buildpack 2: https://github.com/heroku/heroku-buildpack-chromedriver
+# Step 2: Add the PATH variable to the Heroku configuration
+# heroku config:set GOOGLE_CHROME_BIN=/app/.apt/usr/bin/google_chrome
+# heroku config:set CHROMEDRIVER_PATH=/app/.chromedriver/bin/chromedriver
+# heroku ps:scale worker=0 

@@ -1,17 +1,8 @@
-# Step 1: Download the Buildpacks Necessary for the ChromeDriver
-# Buildpack 1: https://github.com/heroku/heroku-buildpack-google-chrome
-# Buildpack 2: https://github.com/heroku/heroku-buildpack-chromedriver
-# Step 2: Add the PATH variable to the Heroku configuration
-# heroku config:set GOOGLE_CHROME_BIN=/app/.apt/usr/bin/google_chrome
-# heroku config:set CHROMEDRIVER_PATH=/app/.chromedriver/bin/chromedriver
-# heroku ps:scale worker=0 
-from selenium import webdriver
-from bs4 import BeautifulSoup as soup 
 import os
 import time
 from flask import Flask, render_template, request, redirect
-
-app = Flask(__name__)
+from selenium import webdriver
+from bs4 import BeautifulSoup as soup 
 
 # Chromedrive setting
 chrome_options = webdriver.ChromeOptions()
@@ -22,9 +13,10 @@ chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
 driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
 
 # Link
-link = "https://medium.com"
 fr = 'Paris, France'
 to = 'Marseille, France'
+
+app = Flask(__name__)
 
 def from_to(fr, to):
     # url
@@ -60,13 +52,11 @@ def from_to(fr, to):
 def index():
     return render_template('index.html')
 
-@app.route('/distance/<fr>/<to>')
+@app.route('/distance/<fr>/<to>', methods=['GET', 'POST'])
 def distance(fr, to):
   #returns the post, the post_id should be an int
   result = from_to(fr, to)
   return result
-
-
 
 
 if __name__ == '__main__':

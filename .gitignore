@@ -1,2 +1,3 @@
 venv/*
 parsing_analysis/*
+.vscode/*
