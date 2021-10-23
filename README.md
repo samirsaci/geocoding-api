@@ -15,23 +15,44 @@ This will be simple, quick and dirty, with no intention to be a scalable solutio
 2. Set up your Flask API that will receive the request and return a distance
 3. Deploy your code on Heroku
 
-## Objective
-This repository code can be used to build a visualization tool to apply the principles presented in this article.
 
 ## Code
-This repository code should be used in the first step of analysis to duplicate the example found and render it using Python Flask.
-1. Copy Github repository in your local folder and create a local python environment
-2. Download libraries listed in requirements.txt
+This repository code is ready to be deployed on Heroku:
+##### 1. Copy Github repository in your local folder and create a local python environment
+##### 2. Download libraries listed in requirements.txt
 ```
   pip3 install -r requirements.txt
 ```
-3. Launch app.py
+##### 3. Download Buildpacks on Heroku to use Selenium + ChromeDriver
+Go to settings > Add Buildpack
+![This is an image](https://miro.medium.com/max/875/1*mDsg_6F14SKeeds0kdHlwg.png)
 ```
-py app.py
+Enter Two Links
+https://github.com/heroku/heroku-buildpack-google-chrome
+https://github.com/heroku/heroku-buildpack-chromedriver
+```
+##### 4. Set up Environment Variables on Heroku
+![This is an image](https://miro.medium.com/max/875/1*2ENP1_ndBVoaSamUXUtVxw.png)
+```
+CHROMEDRIVER_PATH: /app/.chromedriver/bin/chromedriver
+GOOGLE_CHROME_BIN: /app/.apt/usr/bin/google-chrome
+```
+##### 5. Deploy your app on Heroku
+
+
+## Test your API
+#### Test your API to calculate the distance
+```
+From: Paris, France
+To: Marseille, France
 ```
 
-## Next Steps
-Communicate these visuals to your operations and marketing team to understand what drives your sales.
+#### Request link
+http://xxx-xxx.herokuapp.com/distance/Paris,France/Marseille,France
+(replace xxx-xxx by your Heroku app name)
+
+#### Response
+{“distance”:”775 km”}
 
 ## About me 🤓
 Senior Supply Chain Engineer with an international experience working on Logistics and Transportation operations. \
