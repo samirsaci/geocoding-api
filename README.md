@@ -1,8 +1,8 @@
 ## Build Your Free GPS Routing API with Python Flask 🗺️
 *Build your free Distance Matrix API deployed on the cloud*
 
-### Medium Article
-In this [Medium Article](https://medium.com/nerd-for-tech/build-your-free-gps-routing-api-to-calculate-road-distances-143632cc4917), we will create a free, easy-to-implement and customizable (and a bit slow :D) Distance Matrix API using Flask with a Selenium Bot deployed on Heroku
+### Article
+In this [Article](https://www.samirsaci.com/build-a-shipment-tracking-tool-using-a-telegram-bot/), we will create a free, easy-to-implement and customizable (and a bit slow :D) Distance Matrix API using Flask with a Selenium Bot deployed on Heroku
 
 ### How does it work?
 Before starting to read this part, please forget everything you know about how to put in production a fast, efficient and stable code ensuring quick response with limited resources.
