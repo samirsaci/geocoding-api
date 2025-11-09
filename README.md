@@ -2,7 +2,7 @@
 *Build your free Distance Matrix API deployed on the cloud*
 
 ### Article
-In this [Article](https://s-saci95.medium.com/build-your-free-gps-routing-api-to-calculate-road-distances-143632cc4917), we will create a free, easy-to-implement and customizable (and a bit slow :D) Distance Matrix API using Flask with a Selenium Bot deployed on Heroku
+In this [Article](https://www.samirsaci.com/build-a-gps-routing-api-with-python-flask/), we will create a free, easy-to-implement and customizable (and a bit slow :D) Distance Matrix API using Flask with a Selenium Bot deployed on Heroku
 
 ### How does it work?
 Before starting to read this part, please forget everything you know about how to put in production a fast, efficient and stable code ensuring quick response with limited resources.
